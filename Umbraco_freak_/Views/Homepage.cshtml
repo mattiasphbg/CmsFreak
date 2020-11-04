@@ -3,3 +3,20 @@
 @{
 	Layout = "Master1.cshtml";
 }
+
+@{
+	var selection = Umbraco.ContentAtRoot().FirstOrDefault()
+    .ChildrenOfType("products")
+    .Where(x => x.IsVisible());
+}
+
+<h1>Popular products</h1>
+<ul>
+	@foreach (var item in selection)
+	{
+		<li>
+			<a href="@item.Url">@item.Name</a>
+		</li>
+	}
+</ul>
+

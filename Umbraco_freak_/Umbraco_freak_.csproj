@@ -331,6 +331,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Models\" />
+    <Folder Include="Views\MacroPartials\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
