@@ -2,6 +2,7 @@
 @{
 	Layout = null;
 }
+
 <!DOCTYPE html>
 
 <html data-wf-domain="business-starter-template.webflow.io" data-wf-page="5c6eb5400253230ce6de2bd7" data-wf-site="5c6eb5400253230156de2bd6">
@@ -44,16 +45,8 @@
                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTrUSNZMdbuD8dABw5DDxlPqciFa0ITrzXzKQ&usqp=CAU" width="108" alt="" class="logo-image" align="left"/><h2>Freaky Fashion</h2>
                 </a>
                 <div class="menu">
-                    <nav role="navigation" class="navigation-items w-nav-menu">
-                        <a href="/about" class="navigation-item w-nav-link">About</a>
-                        <a href="/projects" class="navigation-item w-nav-link">Work</a>
-                        <a href="/team" class="navigation-item w-nav-link">team</a>
-                        <a href="/blog" class="navigation-item w-nav-link">Blog</a>
-                        <a href="/contact-us/" class="navigation-item w-nav-link">Contact</a>
-                    </nav>
-                    <div class="menu-button w-nav-button">
-                        <img src="https://assets.website-files.com/5c6eb5400253230156de2bd6/5c6eb8fd2f27af658094fa4a_menu-icon.png" width="22" alt="" class="menu-icon"/>
-                    </div>
+                  @Html.Partial("navbar")
+                   
                 </div>
                 <a href="mailto:mail@business.com?subject=You&#x27;ve%20got%20mail!" class="button cc-contact-us w-inline-block">
                     <div>Contact US</div>
