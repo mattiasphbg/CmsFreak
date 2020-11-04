@@ -1,0 +1,19 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.ContentPage>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "Master1.cshtml";
+}
+
+<!-- Main -->
+<section id="main" class="wrapper">
+    <div class="container">
+
+        <header class="major special">
+            <h2>@Model.Value("page_Title")</h2>
+            
+        </header>
+
+        <a href="#" class="image fit"><img src="images/pic11.jpg" alt="" /></a>
+        @Model.Value("body_Text")
+    </div>
+</section>
