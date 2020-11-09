@@ -17,14 +17,14 @@ using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 using Umbraco.ModelsBuilder.Embedded;
 
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "afd3498afa61838f")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.3")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "ebaf170f02e6af1a")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.7")]
 
 namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Homepage</summary>
 	[PublishedModel("homepage")]
-	public partial class Homepage : PublishedContentModel, IHeaderControls
+	public partial class Homepage : PublishedContentModel, IContentGrid, IFooterControl, IHeaderControls, IMainImageControls, ISEocontrols
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -48,20 +48,73 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Title
+		/// Main Content: Displaying things.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
-		[ImplementPropertyType("title")]
-		public string Title => global::Umbraco.Web.PublishedModels.HeaderControls.GetTitle(this);
+		[ImplementPropertyType("mainContent")]
+		public global::Newtonsoft.Json.Linq.JToken MainContent => global::Umbraco.Web.PublishedModels.ContentGrid.GetMainContent(this);
+
+		///<summary>
+		/// Socal links: Enter the social links for the footer
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("socalLinks")]
+		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.IconLinkItem> SocalLinks => global::Umbraco.Web.PublishedModels.FooterControl.GetSocalLinks(this);
+
+		///<summary>
+		/// Header's Subtitle: Give more information about the title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Header_Subtitle")]
+		public string Header_Subtitle => global::Umbraco.Web.PublishedModels.HeaderControls.GetHeader_Subtitle(this);
+
+		///<summary>
+		/// Header's Title: The name of the category/product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Header_Title")]
+		public string Header_Title => global::Umbraco.Web.PublishedModels.HeaderControls.GetHeader_Title(this);
+
+		///<summary>
+		/// Main image: The image of the category or product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("mainImage")]
+		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
+
+		///<summary>
+		/// Meta decription: More information about the thing
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("metaDecription")]
+		public string MetaDecription => global::Umbraco.Web.PublishedModels.SEocontrols.GetMetaDecription(this);
+
+		///<summary>
+		/// Meta keywords: Linking word (tags) to different things
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("metaKeywords")]
+		public global::System.Collections.Generic.IEnumerable<string> MetaKeywords => global::Umbraco.Web.PublishedModels.SEocontrols.GetMetaKeywords(this);
+
+		///<summary>
+		/// Meta name: The search name of the thing
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("metaName")]
+		public string MetaName => global::Umbraco.Web.PublishedModels.SEocontrols.GetMetaName(this);
 	}
 
 	// Mixin Content Type with alias "HeaderControls"
 	/// <summary>Header Controls</summary>
 	public partial interface IHeaderControls : IPublishedContent
 	{
-		/// <summary>Title</summary>
+		/// <summary>Header's Subtitle</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
-		string Title { get; }
+		string Header_Subtitle { get; }
+
+		/// <summary>Header's Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		string Header_Title { get; }
 	}
 
 	/// <summary>Header Controls</summary>
@@ -90,20 +143,40 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Title
+		/// Header's Subtitle: Give more information about the title
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
-		[ImplementPropertyType("title")]
-		public string Title => GetTitle(this);
+		[ImplementPropertyType("Header_Subtitle")]
+		public string Header_Subtitle => GetHeader_Subtitle(this);
 
-		/// <summary>Static getter for Title</summary>
+		/// <summary>Static getter for Header's Subtitle</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
-		public static string GetTitle(IHeaderControls that) => that.Value<string>("title");
+		public static string GetHeader_Subtitle(IHeaderControls that) => that.Value<string>("Header_Subtitle");
+
+		///<summary>
+		/// Header's Title: The name of the category/product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Header_Title")]
+		public string Header_Title => GetHeader_Title(this);
+
+		/// <summary>Static getter for Header's Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static string GetHeader_Title(IHeaderControls that) => that.Value<string>("Header_Title");
 	}
 
-	/// <summary>Content grid</summary>
+	// Mixin Content Type with alias "contentGrid"
+	/// <summary>Content Controls</summary>
+	public partial interface IContentGrid : IPublishedContent
+	{
+		/// <summary>Main Content</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		global::Newtonsoft.Json.Linq.JToken MainContent { get; }
+	}
+
+	/// <summary>Content Controls</summary>
 	[PublishedModel("contentGrid")]
-	public partial class ContentGrid : PublishedContentModel
+	public partial class ContentGrid : PublishedContentModel, IContentGrid
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -127,16 +200,41 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// main content: Displaying products.
+		/// Main Content: Displaying things.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("mainContent")]
-		public global::Newtonsoft.Json.Linq.JToken MainContent => this.Value<global::Newtonsoft.Json.Linq.JToken>("mainContent");
+		public global::Newtonsoft.Json.Linq.JToken MainContent => GetMainContent(this);
+
+		/// <summary>Static getter for Main Content</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static global::Newtonsoft.Json.Linq.JToken GetMainContent(IContentGrid that) => that.Value<global::Newtonsoft.Json.Linq.JToken>("mainContent");
+	}
+
+	// Mixin Content Type with alias "productControls"
+	/// <summary>Product controls</summary>
+	public partial interface IProductControls : IPublishedContent
+	{
+		/// <summary>Product's article number</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		string Product_articleNumber { get; }
+
+		/// <summary>Product's Description</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		global::System.Web.IHtmlString Product_Description { get; }
+
+		/// <summary>Product's Price</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		string Product_Price { get; }
+
+		/// <summary>Product's Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		string Product_title { get; }
 	}
 
 	/// <summary>Product controls</summary>
 	[PublishedModel("productControls")]
-	public partial class ProductControls : PublishedContentModel
+	public partial class ProductControls : PublishedContentModel, IProductControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -160,37 +258,62 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// article number: The number for every product
+		/// Product's article number: The number for every product
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
-		[ImplementPropertyType("articleNumber")]
-		public string ArticleNumber => this.Value<string>("articleNumber");
+		[ImplementPropertyType("Product_articleNumber")]
+		public string Product_articleNumber => GetProduct_articleNumber(this);
+
+		/// <summary>Static getter for Product's article number</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static string GetProduct_articleNumber(IProductControls that) => that.Value<string>("Product_articleNumber");
 
 		///<summary>
-		/// Description: Info about the product
+		/// Product's Description: Info about the product
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
-		[ImplementPropertyType("description")]
-		public global::System.Web.IHtmlString Description => this.Value<global::System.Web.IHtmlString>("description");
+		[ImplementPropertyType("Product_Description")]
+		public global::System.Web.IHtmlString Product_Description => GetProduct_Description(this);
+
+		/// <summary>Static getter for Product's Description</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static global::System.Web.IHtmlString GetProduct_Description(IProductControls that) => that.Value<global::System.Web.IHtmlString>("Product_Description");
 
 		///<summary>
-		/// Price: The price of the product
+		/// Product's Price: The price of the product
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
-		[ImplementPropertyType("price")]
-		public string Price => this.Value<string>("price");
+		[ImplementPropertyType("Product_Price")]
+		public string Product_Price => GetProduct_Price(this);
+
+		/// <summary>Static getter for Product's Price</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static string GetProduct_Price(IProductControls that) => that.Value<string>("Product_Price");
 
 		///<summary>
-		/// title: The name of the product
+		/// Product's Title: The name of the product
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
-		[ImplementPropertyType("title")]
-		public string Title => this.Value<string>("title");
+		[ImplementPropertyType("Product_title")]
+		public string Product_title => GetProduct_title(this);
+
+		/// <summary>Static getter for Product's Title</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static string GetProduct_title(IProductControls that) => that.Value<string>("Product_title");
+	}
+
+	// Mixin Content Type with alias "mainImageControls"
+	/// <summary>Main image controls</summary>
+	public partial interface IMainImageControls : IPublishedContent
+	{
+		/// <summary>Main image</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage { get; }
 	}
 
 	/// <summary>Main image controls</summary>
 	[PublishedModel("mainImageControls")]
-	public partial class MainImageControls : PublishedContentModel
+	public partial class MainImageControls : PublishedContentModel, IMainImageControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -214,16 +337,37 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Main image
+		/// Main image: The image of the category or product
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("mainImage")]
-		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent>>("mainImage");
+		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => GetMainImage(this);
+
+		/// <summary>Static getter for Main image</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> GetMainImage(IMainImageControls that) => that.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent>>("mainImage");
+	}
+
+	// Mixin Content Type with alias "sEOControls"
+	/// <summary>SEO control</summary>
+	public partial interface ISEocontrols : IPublishedContent
+	{
+		/// <summary>Meta decription</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		string MetaDecription { get; }
+
+		/// <summary>Meta keywords</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		global::System.Collections.Generic.IEnumerable<string> MetaKeywords { get; }
+
+		/// <summary>Meta name</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		string MetaName { get; }
 	}
 
 	/// <summary>SEO control</summary>
 	[PublishedModel("sEOControls")]
-	public partial class SEocontrols : PublishedContentModel
+	public partial class SEocontrols : PublishedContentModel, ISEocontrols
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -247,25 +391,37 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
-		/// Meta decription
+		/// Meta decription: More information about the thing
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("metaDecription")]
-		public string MetaDecription => this.Value<string>("metaDecription");
+		public string MetaDecription => GetMetaDecription(this);
+
+		/// <summary>Static getter for Meta decription</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static string GetMetaDecription(ISEocontrols that) => that.Value<string>("metaDecription");
 
 		///<summary>
-		/// Meta keywords
+		/// Meta keywords: Linking word (tags) to different things
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("metaKeywords")]
-		public global::System.Collections.Generic.IEnumerable<string> MetaKeywords => this.Value<global::System.Collections.Generic.IEnumerable<string>>("metaKeywords");
+		public global::System.Collections.Generic.IEnumerable<string> MetaKeywords => GetMetaKeywords(this);
+
+		/// <summary>Static getter for Meta keywords</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static global::System.Collections.Generic.IEnumerable<string> GetMetaKeywords(ISEocontrols that) => that.Value<global::System.Collections.Generic.IEnumerable<string>>("metaKeywords");
 
 		///<summary>
-		/// Meta name
+		/// Meta name: The search name of the thing
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("metaName")]
-		public string MetaName => this.Value<string>("metaName");
+		public string MetaName => GetMetaName(this);
+
+		/// <summary>Static getter for Meta name</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static string GetMetaName(ISEocontrols that) => that.Value<string>("metaName");
 	}
 
 	/// <summary>Contact form control</summary>
@@ -301,16 +457,25 @@ namespace Umbraco.Web.PublishedModels
 		public global::System.Web.IHtmlString ErrorMessage => this.Value<global::System.Web.IHtmlString>("errorMessage");
 
 		///<summary>
-		/// Success meassage
+		/// Success meassage: Set what text should be used if it thing worked
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("successMeassage")]
 		public global::System.Web.IHtmlString SuccessMeassage => this.Value<global::System.Web.IHtmlString>("successMeassage");
 	}
 
+	// Mixin Content Type with alias "footerControl"
+	/// <summary>Footer control</summary>
+	public partial interface IFooterControl : IPublishedContent
+	{
+		/// <summary>Socal links</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.IconLinkItem> SocalLinks { get; }
+	}
+
 	/// <summary>Footer control</summary>
 	[PublishedModel("footerControl")]
-	public partial class FooterControl : PublishedContentModel
+	public partial class FooterControl : PublishedContentModel, IFooterControl
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -338,7 +503,11 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("socalLinks")]
-		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.IconLinkItem> SocalLinks => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.IconLinkItem>>("socalLinks");
+		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.IconLinkItem> SocalLinks => GetSocalLinks(this);
+
+		/// <summary>Static getter for Socal links</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.IconLinkItem> GetSocalLinks(IFooterControl that) => that.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.IconLinkItem>>("socalLinks");
 	}
 
 	/// <summary>Icon link item</summary>
@@ -383,7 +552,7 @@ namespace Umbraco.Web.PublishedModels
 
 	/// <summary>Product</summary>
 	[PublishedModel("product")]
-	public partial class Product : PublishedContentModel
+	public partial class Product : PublishedContentModel, IContentGrid, IHeaderControls, IMainImageControls, IProductControls, ISEocontrols, IVisibilityControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -405,11 +574,102 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Main Content: Displaying things.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("mainContent")]
+		public global::Newtonsoft.Json.Linq.JToken MainContent => global::Umbraco.Web.PublishedModels.ContentGrid.GetMainContent(this);
+
+		///<summary>
+		/// Header's Subtitle: Give more information about the title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Header_Subtitle")]
+		public string Header_Subtitle => global::Umbraco.Web.PublishedModels.HeaderControls.GetHeader_Subtitle(this);
+
+		///<summary>
+		/// Header's Title: The name of the category/product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Header_Title")]
+		public string Header_Title => global::Umbraco.Web.PublishedModels.HeaderControls.GetHeader_Title(this);
+
+		///<summary>
+		/// Main image: The image of the category or product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("mainImage")]
+		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
+
+		///<summary>
+		/// Product's article number: The number for every product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Product_articleNumber")]
+		public string Product_articleNumber => global::Umbraco.Web.PublishedModels.ProductControls.GetProduct_articleNumber(this);
+
+		///<summary>
+		/// Product's Description: Info about the product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Product_Description")]
+		public global::System.Web.IHtmlString Product_Description => global::Umbraco.Web.PublishedModels.ProductControls.GetProduct_Description(this);
+
+		///<summary>
+		/// Product's Price: The price of the product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Product_Price")]
+		public string Product_Price => global::Umbraco.Web.PublishedModels.ProductControls.GetProduct_Price(this);
+
+		///<summary>
+		/// Product's Title: The name of the product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Product_title")]
+		public string Product_title => global::Umbraco.Web.PublishedModels.ProductControls.GetProduct_title(this);
+
+		///<summary>
+		/// Meta decription: More information about the thing
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("metaDecription")]
+		public string MetaDecription => global::Umbraco.Web.PublishedModels.SEocontrols.GetMetaDecription(this);
+
+		///<summary>
+		/// Meta keywords: Linking word (tags) to different things
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("metaKeywords")]
+		public global::System.Collections.Generic.IEnumerable<string> MetaKeywords => global::Umbraco.Web.PublishedModels.SEocontrols.GetMetaKeywords(this);
+
+		///<summary>
+		/// Meta name: The search name of the thing
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("metaName")]
+		public string MetaName => global::Umbraco.Web.PublishedModels.SEocontrols.GetMetaName(this);
+
+		///<summary>
+		/// Hide from XML Sitmap: Take this if you want to hide this from the XML page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("hideFromXMLSitmap")]
+		public bool HideFromXmlsitmap => global::Umbraco.Web.PublishedModels.VisibilityControls.GetHideFromXmlsitmap(this);
+
+		///<summary>
+		/// Umbraco Navi hide: Add this if you want to hide this page from the navigtion and from search result
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide => global::Umbraco.Web.PublishedModels.VisibilityControls.GetUmbracoNaviHide(this);
 	}
 
 	/// <summary>Product List</summary>
 	[PublishedModel("productList")]
-	public partial class ProductList : PublishedContentModel
+	public partial class ProductList : PublishedContentModel, IContentGrid, IHeaderControls, IMainImageControls, ISEocontrols, IVisibilityControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -431,6 +691,69 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Main Content: Displaying things.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("mainContent")]
+		public global::Newtonsoft.Json.Linq.JToken MainContent => global::Umbraco.Web.PublishedModels.ContentGrid.GetMainContent(this);
+
+		///<summary>
+		/// Header's Subtitle: Give more information about the title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Header_Subtitle")]
+		public string Header_Subtitle => global::Umbraco.Web.PublishedModels.HeaderControls.GetHeader_Subtitle(this);
+
+		///<summary>
+		/// Header's Title: The name of the category/product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Header_Title")]
+		public string Header_Title => global::Umbraco.Web.PublishedModels.HeaderControls.GetHeader_Title(this);
+
+		///<summary>
+		/// Main image: The image of the category or product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("mainImage")]
+		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
+
+		///<summary>
+		/// Meta decription: More information about the thing
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("metaDecription")]
+		public string MetaDecription => global::Umbraco.Web.PublishedModels.SEocontrols.GetMetaDecription(this);
+
+		///<summary>
+		/// Meta keywords: Linking word (tags) to different things
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("metaKeywords")]
+		public global::System.Collections.Generic.IEnumerable<string> MetaKeywords => global::Umbraco.Web.PublishedModels.SEocontrols.GetMetaKeywords(this);
+
+		///<summary>
+		/// Meta name: The search name of the thing
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("metaName")]
+		public string MetaName => global::Umbraco.Web.PublishedModels.SEocontrols.GetMetaName(this);
+
+		///<summary>
+		/// Hide from XML Sitmap: Take this if you want to hide this from the XML page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("hideFromXMLSitmap")]
+		public bool HideFromXmlsitmap => global::Umbraco.Web.PublishedModels.VisibilityControls.GetHideFromXmlsitmap(this);
+
+		///<summary>
+		/// Umbraco Navi hide: Add this if you want to hide this page from the navigtion and from search result
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide => global::Umbraco.Web.PublishedModels.VisibilityControls.GetUmbracoNaviHide(this);
 	}
 
 	/// <summary>SEO Page</summary>
@@ -461,7 +784,7 @@ namespace Umbraco.Web.PublishedModels
 
 	/// <summary>Error</summary>
 	[PublishedModel("error")]
-	public partial class Error : PublishedContentModel
+	public partial class Error : PublishedContentModel, IContentGrid, IHeaderControls, IMainImageControls, IVisibilityControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -483,11 +806,53 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Main Content: Displaying things.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("mainContent")]
+		public global::Newtonsoft.Json.Linq.JToken MainContent => global::Umbraco.Web.PublishedModels.ContentGrid.GetMainContent(this);
+
+		///<summary>
+		/// Header's Subtitle: Give more information about the title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Header_Subtitle")]
+		public string Header_Subtitle => global::Umbraco.Web.PublishedModels.HeaderControls.GetHeader_Subtitle(this);
+
+		///<summary>
+		/// Header's Title: The name of the category/product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("Header_Title")]
+		public string Header_Title => global::Umbraco.Web.PublishedModels.HeaderControls.GetHeader_Title(this);
+
+		///<summary>
+		/// Main image: The image of the category or product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("mainImage")]
+		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
+
+		///<summary>
+		/// Hide from XML Sitmap: Take this if you want to hide this from the XML page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("hideFromXMLSitmap")]
+		public bool HideFromXmlsitmap => global::Umbraco.Web.PublishedModels.VisibilityControls.GetHideFromXmlsitmap(this);
+
+		///<summary>
+		/// Umbraco Navi hide: Add this if you want to hide this page from the navigtion and from search result
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide => global::Umbraco.Web.PublishedModels.VisibilityControls.GetUmbracoNaviHide(this);
 	}
 
 	/// <summary>Content</summary>
 	[PublishedModel("content")]
-	public partial class Content : PublishedContentModel
+	public partial class Content : PublishedContentModel, IContentGrid, IMainImageControls, ISEocontrols, IVisibilityControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -509,11 +874,60 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Main Content: Displaying things.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("mainContent")]
+		public global::Newtonsoft.Json.Linq.JToken MainContent => global::Umbraco.Web.PublishedModels.ContentGrid.GetMainContent(this);
+
+		///<summary>
+		/// Main image: The image of the category or product
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("mainImage")]
+		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
+
+		///<summary>
+		/// Meta decription: More information about the thing
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("metaDecription")]
+		public string MetaDecription => global::Umbraco.Web.PublishedModels.SEocontrols.GetMetaDecription(this);
+
+		///<summary>
+		/// Meta keywords: Linking word (tags) to different things
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("metaKeywords")]
+		public global::System.Collections.Generic.IEnumerable<string> MetaKeywords => global::Umbraco.Web.PublishedModels.SEocontrols.GetMetaKeywords(this);
+
+		///<summary>
+		/// Meta name: The search name of the thing
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("metaName")]
+		public string MetaName => global::Umbraco.Web.PublishedModels.SEocontrols.GetMetaName(this);
+
+		///<summary>
+		/// Hide from XML Sitmap: Take this if you want to hide this from the XML page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("hideFromXMLSitmap")]
+		public bool HideFromXmlsitmap => global::Umbraco.Web.PublishedModels.VisibilityControls.GetHideFromXmlsitmap(this);
+
+		///<summary>
+		/// Umbraco Navi hide: Add this if you want to hide this page from the navigtion and from search result
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide => global::Umbraco.Web.PublishedModels.VisibilityControls.GetUmbracoNaviHide(this);
 	}
 
 	/// <summary>XML Sitemap</summary>
 	[PublishedModel("xMLSitemap")]
-	public partial class XMlsitemap : PublishedContentModel
+	public partial class XMlsitemap : PublishedContentModel, IVisibilityControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -535,11 +949,38 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Hide from XML Sitmap: Take this if you want to hide this from the XML page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("hideFromXMLSitmap")]
+		public bool HideFromXmlsitmap => global::Umbraco.Web.PublishedModels.VisibilityControls.GetHideFromXmlsitmap(this);
+
+		///<summary>
+		/// Umbraco Navi hide: Add this if you want to hide this page from the navigtion and from search result
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("umbracoNaviHide")]
+		public bool UmbracoNaviHide => global::Umbraco.Web.PublishedModels.VisibilityControls.GetUmbracoNaviHide(this);
+	}
+
+	// Mixin Content Type with alias "visibilityControls"
+	/// <summary>Visibility Controls</summary>
+	public partial interface IVisibilityControls : IPublishedContent
+	{
+		/// <summary>Hide from XML Sitmap</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		bool HideFromXmlsitmap { get; }
+
+		/// <summary>Umbraco Navi hide</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		bool UmbracoNaviHide { get; }
 	}
 
 	/// <summary>Visibility Controls</summary>
 	[PublishedModel("visibilityControls")]
-	public partial class VisibilityControls : PublishedContentModel
+	public partial class VisibilityControls : PublishedContentModel, IVisibilityControls
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -567,14 +1008,22 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("hideFromXMLSitmap")]
-		public bool HideFromXmlsitmap => this.Value<bool>("hideFromXMLSitmap");
+		public bool HideFromXmlsitmap => GetHideFromXmlsitmap(this);
+
+		/// <summary>Static getter for Hide from XML Sitmap</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static bool GetHideFromXmlsitmap(IVisibilityControls that) => that.Value<bool>("hideFromXMLSitmap");
 
 		///<summary>
 		/// Umbraco Navi hide: Add this if you want to hide this page from the navigtion and from search result
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("umbracoNaviHide")]
-		public bool UmbracoNaviHide => this.Value<bool>("umbracoNaviHide");
+		public bool UmbracoNaviHide => GetUmbracoNaviHide(this);
+
+		/// <summary>Static getter for Umbraco Navi hide</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static bool GetUmbracoNaviHide(IVisibilityControls that) => that.Value<bool>("umbracoNaviHide");
 	}
 
 	/// <summary>Folder</summary>

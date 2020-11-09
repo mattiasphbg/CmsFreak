@@ -1,0 +1,20 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Homepage>
+
+@using Umbraco.Web.PublishedModels
+
+@{
+	Layout = "Master.cshtml";
+}
+
+@* the fun starts here *@
+
+@Model.Header_Title
+
+
+@*
+By using the Web.PublishedModels you can Use Model.Header_Title istead of 
+Model.Value("Header_Title") 
+
+If you go inside the model.generater you see what have bee generated and is much better take content dirckly from the model.builder istead of the model.value.
+
+*@
