@@ -1,5 +1,20 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Product>
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
-	Layout = null;
+    Layout = "Master1.cshtml";
+
+
 }
+<div class="container" id="product-section">
+  <div class="row">
+   <div class="col-md-6">
+       <img src="@Model.Value("image")" style="height:100px; width:100px" alt="pic" />
+   </div>
+   <div class="col-md-6">
+     <div class="row">
+  <div class="col-md-12">
+   <h1>Kodak 'Brownie' Flash B Camera</h1>
+ </div>
+   </div>
+  </div><!-- end row -->
+ </div><!-- end container -->
