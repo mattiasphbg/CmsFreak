@@ -17,8 +17,8 @@ using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 using Umbraco.ModelsBuilder.Embedded;
 
-[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "70282d71a2fd48d2")]
-[assembly:System.Reflection.AssemblyVersion("0.0.0.1")]
+[assembly:ModelsBuilderAssembly(PureLive = true, SourceHash = "271cd415274b65c7")]
+[assembly:System.Reflection.AssemblyVersion("0.0.0.4")]
 
 namespace Umbraco.Web.PublishedModels
 {
@@ -46,6 +46,13 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Carousel_products
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("carousel_products")]
+		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.Carousel> Carousel_products => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Web.PublishedModels.Carousel>>("carousel_products");
 
 		///<summary>
 		/// Main Content: Displaying things.
@@ -80,7 +87,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("mainImage")]
-		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
+		public global::Umbraco.Core.Models.PublishedContent.IPublishedContent MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
 
 		///<summary>
 		/// Meta decription: More information about the thing
@@ -308,7 +315,7 @@ namespace Umbraco.Web.PublishedModels
 	{
 		/// <summary>Main image</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
-		global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage { get; }
+		global::Umbraco.Core.Models.PublishedContent.IPublishedContent MainImage { get; }
 	}
 
 	/// <summary>Main image controls</summary>
@@ -341,11 +348,11 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("mainImage")]
-		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => GetMainImage(this);
+		public global::Umbraco.Core.Models.PublishedContent.IPublishedContent MainImage => GetMainImage(this);
 
 		/// <summary>Static getter for Main image</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
-		public static global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> GetMainImage(IMainImageControls that) => that.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent>>("mainImage");
+		public static global::Umbraco.Core.Models.PublishedContent.IPublishedContent GetMainImage(IMainImageControls that) => that.Value<global::Umbraco.Core.Models.PublishedContent.IPublishedContent>("mainImage");
 	}
 
 	// Mixin Content Type with alias "sEOControls"
@@ -601,7 +608,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("mainImage")]
-		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
+		public global::Umbraco.Core.Models.PublishedContent.IPublishedContent MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
 
 		///<summary>
 		/// Product's article number: The number for every product
@@ -718,7 +725,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("mainImage")]
-		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
+		public global::Umbraco.Core.Models.PublishedContent.IPublishedContent MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
 
 		///<summary>
 		/// Meta decription: More information about the thing
@@ -833,7 +840,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("mainImage")]
-		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
+		public global::Umbraco.Core.Models.PublishedContent.IPublishedContent MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
 
 		///<summary>
 		/// Hide from XML Sitmap: Take this if you want to hide this from the XML page
@@ -887,7 +894,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		[ImplementPropertyType("mainImage")]
-		public global::System.Collections.Generic.IEnumerable<global::Umbraco.Core.Models.PublishedContent.IPublishedContent> MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
+		public global::Umbraco.Core.Models.PublishedContent.IPublishedContent MainImage => global::Umbraco.Web.PublishedModels.MainImageControls.GetMainImage(this);
 
 		///<summary>
 		/// Meta decription: More information about the thing
@@ -1024,6 +1031,72 @@ namespace Umbraco.Web.PublishedModels
 		/// <summary>Static getter for Umbraco Navi hide</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
 		public static bool GetUmbracoNaviHide(IVisibilityControls that) => that.Value<bool>("umbracoNaviHide");
+	}
+
+	/// <summary>Slide</summary>
+	[PublishedModel("slide")]
+	public partial class Slide : PublishedElementModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public new const string ModelTypeAlias = "slide";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Slide, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public Slide(IPublishedElement content)
+			: base(content)
+		{ }
+
+		// properties
+	}
+
+	/// <summary>Carousel</summary>
+	[PublishedModel("carousel")]
+	public partial class Carousel : PublishedElementModel
+	{
+		// helpers
+#pragma warning disable 0109 // new is redundant
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public new const string ModelTypeAlias = "carousel";
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public new static IPublishedContentType GetModelContentType()
+			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Carousel, TValue>> selector)
+			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
+#pragma warning restore 0109
+
+		// ctor
+		public Carousel(IPublishedElement content)
+			: base(content)
+		{ }
+
+		// properties
+
+		///<summary>
+		/// Carousel_link
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("carousel_link")]
+		public global::Umbraco.Web.Models.Link Carousel_link => this.Value<global::Umbraco.Web.Models.Link>("carousel_link");
+
+		///<summary>
+		/// Carousel_rich
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "8.9.0")]
+		[ImplementPropertyType("carousel_rich")]
+		public global::System.Web.IHtmlString Carousel_rich => this.Value<global::System.Web.IHtmlString>("carousel_rich");
 	}
 
 	/// <summary>Folder</summary>

@@ -1,0 +1,46 @@
+﻿@using Umbraco.Web.Models
+@inherits UmbracoViewPage
+
+@{
+    var homePage = Model.AncestorOrSelf<Home>();
+    var carousel = homePage.Value<IEnumerable<IPublishedElement>>("Carousel_products");
+
+}
+
+
+<hr>
+
+<!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-10 mx-auto">
+                @if (carousel != null && carousel.Any())
+                {
+                <ul class="list-inline text-center">
+                    @foreach (var item in carousel)
+                    {
+
+                        var link = item.Value<Link>("carousel_link");
+                        var iconClass = item.Value("carousel_rich");
+                       
+                        <li class="list-inline-item">
+                            <a href="@link.Url" target="@link.Target">
+                                <div class="">
+                                    
+                                    @iconClass 
+                                </div>
+                            </a>
+                        </li>
+                    }
+
+
+                </ul>
+
+                }
+
+                <p class="copyright text-muted">Copyright &copy; Freak nation 2020</p>
+            </div>
+        </div>
+    </div>
+</footer>

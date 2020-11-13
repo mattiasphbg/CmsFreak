@@ -1,0 +1,15 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Web.PublishedModels.ProductList>
+@using Umbraco_freak_Core.Extensions
+@{
+    Layout = "Master.cshtml";
+
+}
+
+@*
+
+    @Html.Partial("~/Views/Partials/populerProduts.cshtml")
+*@
+@Html.Partial("~/Views/Partials/pageHeader.csHtml")
+
+@Html.GetGridHtml(Model, "mainContent", "Clean", fluidImages: true)
+

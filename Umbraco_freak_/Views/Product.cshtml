@@ -1,0 +1,210 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Web.PublishedModels.Product>
+
+@{
+    Layout = "Master.cshtml";
+    var image = Model.Value<IPublishedContent>("mainImage", fallback: Fallback.ToAncestors);
+
+    string imageUrl = "";
+    if (image != null)
+    {
+        imageUrl = image.GetCropUrl(width: 1903, height: 532);
+    }
+}
+
+
+@*
+    Just add / in the beginning of all img files.  url('img/home-bg.jpg') change it to  url('/img/home-bg.jpg')
+*@
+
+
+@Html.Partial("~/Views/Partials/pageHeader.csHtml")
+
+
+<main>
+
+    <div class="container">
+
+        <!--Section: Block Content-->
+        <section class="my-5">
+
+            <div class="row">
+                <div class="col-md-5 mb-4 mb-md-0">
+
+                    <div class="view zoom z-depth-2 rounded">
+                        <img class="img-fluid w-100" src="@imageUrl" alt="Sample">
+                        <a href="#!">
+                            <div class="mask"></div>
+                        </a>
+                    </div>
+
+                </div>
+                <div class="col-md-7">
+
+                    <h5>@Model.Value("Product_title")</h5>
+                    <p class="mb-2 text-muted text-uppercase small">Artnr : @Model.Value("Product_articleNumber") </p>
+                  
+                    <p><span class="mr-1"><strong>@Model.Value("Product_Price")</strong></span></p>
+                    <p class="pt-1">
+                        @Model.Value("Product_Description", fallback: Fallback.ToAncestors)
+                    </p>
+                  
+                    <hr>
+                    <div class="table-responsive mb-2">
+                        <table class="table table-sm table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td class="pl-0 pb-0 w-25">Quantity</td>
+                                </tr>
+                                <tr>
+                                    <td class="pl-0">
+                                        <div class="def-number-input number-input safari_only mb-0">
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepDown()"
+                                                    class="minus"></button>
+                                            <input class="quantity" min="0" name="quantity" value="1" type="number">
+                                            <button onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
+                                                    class="plus"></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-md mr-1 mb-2">Buy now</button>
+                    <button type="button" class="btn btn-light btn-md mr-1 mb-2">
+                        <i class="fas fa-shopping-cart pr-2"></i>Add to cart
+                    </button>
+                </div>
+            </div>
+
+        </section>
+        <!--Section: Block Content-->
+        <!--Section: Block Content-->
+        <section>
+
+            <h3 class="text-center mt-4 pt-5">Recommended products</h3>
+
+            <!-- Grid row -->
+            <div class="row mt-5 mb-4">
+
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-3 mb-4">
+
+                    <!-- Card -->
+                    <div class="">
+
+                        <div class="view zoom z-depth-2 rounded">
+                            <img class="img-fluid w-100" src="/media/s3zalgmj/lager-157-pants-_valle_-beige.jpg" alt="Sample">
+                            <a href="/pants/pants1/">
+                                <div class="mask"> pants</div>
+                            </a>
+                        </div>
+
+                        <div class="text-center pt-4">
+
+                            <h5 class="mb-0">Pants</h5>
+                            <h6 class="mb-3">$ 40</h6>
+                            <button type="button" class="btn btn-primary btn-sm mr-1"><i class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
+                            <button type="button" class="btn btn-light btn-sm"><i class="fas fa-info-circle pr-2"></i>Details</button>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-3 mb-4">
+
+                    <!-- Card -->
+                    <div class="">
+
+                        <div class="view zoom z-depth-2 rounded">
+                            <img class="img-fluid w-100" src="/media/ltuhcfin/106-95_sh.jpg" alt="Sample">
+                            <a href="/tshirt/tshirt/">
+                                <div class="mask">tshirt</div>
+                            </a>
+                        </div>
+
+                        <div class="text-center pt-4">
+
+                            <h5 class="mb-0">Tshirt</h5>
+                            
+                            <h6 class="mb-3">$ 10</h6>
+                            <button type="button" class="btn btn-primary btn-sm mr-1"><i class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
+                            <button type="button" class="btn btn-light btn-sm"><i class="fas fa-info-circle pr-2"></i>Details</button>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-3 mb-4">
+
+                    <!-- Card -->
+                    <div class="">
+
+                        <div class="view zoom z-depth-2 rounded">
+                            <img class="img-fluid w-100" src="/media/blgdqz5i/25apnw56aj_5710569401914_front.jpg" alt="Sample">
+                            <a href="/tshirt/tshirt2/">
+                                <div class="mask">tshirt2</div>
+                            </a>
+                        </div>
+
+                        <div class="text-center pt-4">
+
+                            <h5 class="mb-0">Tshirt2</h5>
+                            
+                            <h6 class="mb-3">$ 10</h6>
+                            <button type="button" class="btn btn-primary btn-sm mr-1"><i class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
+                            <button type="button" class="btn btn-light btn-sm"><i class="fas fa-info-circle pr-2"></i>Details</button>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-3 mb-4">
+
+                    <!-- Card -->
+                    <div class="">
+
+                        <div class="view zoom z-depth-2 rounded">
+                            <img class="img-fluid w-100" src="/media/cf4io2ul/14063679_birch_001_productlarge.jpg" alt="Sample">
+                            <a href="/tshirt/thirt3/">
+                                <div class="mask">tshirt3</div>
+                            </a>
+                        </div>  
+
+                        <div class="text-center pt-4">
+
+                            <h5 class="mb-0">Tshirt3</h5>
+                            <h6 class="mb-3">$ 15</h6>
+                            <button type="button" class="btn btn-primary btn-sm mr-1"><i class="fas fa-shopping-cart pr-2"></i>Add to cart</button>
+                            <button type="button" class="btn btn-light btn-sm"><i class="fas fa-info-circle pr-2"></i>Details</button>
+
+                        </div>
+
+                    </div>
+                    <!-- Card -->
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </section>
+        <!--Section: Block Content-->
+
+    </div>
+
+</main>
+</article>
+

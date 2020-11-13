@@ -1,8 +1,20 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
-
 @using ClientDependency.Core.Mvc
 
 @{
+
+    @*
+        Html.Requires makes so we dont need to type it on every .cshtml files.
+        Dont forget @using ClientDependency.Core.Mvc, @Html.Rendercss/js() and setting 
+        <compilation defaultLanguage="c#" 
+        "true" batch="true" targetFramework="4.7.2" numRecompilesBeforeAppRestart="50" />  debug to true. 
+        Debug makes so you dont render guid in the devtools in chrome. sometimes you need to check the clientDependency.config and inside change the tag with same name.
+
+
+        
+        Using clientDependency gets the right metods to use and reander says where to place  it.
+
+    *@
     Layout = null;
     Html.RequiresCss("/vendor/bootstrap/css/bootstrap.min.css");
     Html.RequiresCss("/vendor/fontawesome-free/css/all.min.css");
@@ -25,7 +37,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>FreakyFashion - New Crazy prices</title>
+    <title>Freaky Fashion - Crazy prices</title>
 
     @Html.RenderCssHere()
 </head>

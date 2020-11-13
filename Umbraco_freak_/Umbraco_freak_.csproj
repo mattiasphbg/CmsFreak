@@ -270,6 +270,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\Models\all.dll.path" />
+    <Content Include="App_Data\Models\models.hash" />
     <Content Include="config\grid.editors.config.js" />
     <Content Include="config\Lang\cs-CZ.user.xml" />
     <Content Include="config\Lang\da-DK.user.xml" />
@@ -290,11 +292,14 @@
     <Content Include="config\Lang\sv-SE.user.xml" />
     <Content Include="config\Lang\zh-CN.user.xml" />
     <Content Include="config\logviewer.searches.config.js" />
+    <Content Include="css\Contact-Form-Clean.css" />
     <Content Include="Global.asax" />
     <Content Include="index.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Data\Models\all.generated.cs" />
+    <Compile Include="App_Data\Models\models.generated.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -321,11 +326,19 @@
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\BlockList\Default.cshtml" />
     <Content Include="Views\Product.cshtml" />
-    <Content Include="Views\Products.cshtml" />
     <Content Include="Views\Home.cshtml" />
     <Content Include="Views\Master.cshtml" />
     <Content Include="Views\Partials\Navigation.cshtml" />
     <Content Include="Views\Partials\footer.cshtml" />
+    <Content Include="Views\Partials\populerProduts.cshtml" />
+    <Content Include="Views\ProductList.cshtml" />
+    <Content Include="Views\Search.cshtml" />
+    <Content Include="Views\Partials\pageHeader.cshtml" />
+    <Content Include="Views\Error.cshtml" />
+    <Content Include="Views\Content.cshtml" />
+    <Content Include="Views\Partials\Grid\Clean.cshtml" />
+    <Content Include="Views\Partials\Header_seach.cshtml" />
+    <Content Include="Views\Partials\Carousel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -334,8 +347,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\Models\" />
     <Folder Include="Views\MacroPartials\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Umbraco_freak_Core\Umbraco_freak_Core.csproj">
+      <Project>{a36c706c-c531-4b62-bec2-fcd65b3aefd8}</Project>
+      <Name>Umbraco_freak_Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

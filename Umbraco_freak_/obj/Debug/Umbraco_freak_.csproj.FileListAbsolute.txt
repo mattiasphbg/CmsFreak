@@ -131,6 +131,9 @@ C:\workspace\Umbraco\freak\Umbraco_freak_\bin\Umbraco.Examine.dll
 C:\workspace\Umbraco\freak\Umbraco_freak_\bin\Umbraco.ModelsBuilder.Embedded.dll
 C:\workspace\Umbraco\freak\Umbraco_freak_\bin\Umbraco.Web.dll
 C:\workspace\Umbraco\freak\Umbraco_freak_\bin\Umbraco.Web.UI.dll
+C:\workspace\Umbraco\freak\Umbraco_freak_\bin\Umbraco_freak_Core.dll
+C:\workspace\Umbraco\freak\Umbraco_freak_\bin\Umbraco_freak_Core.pdb
+C:\workspace\Umbraco\freak\Umbraco_freak_\bin\Umbraco_freak_Core.dll.config
 C:\workspace\Umbraco\freak\Umbraco_freak_\bin\AngleSharp.xml
 C:\workspace\Umbraco\freak\Umbraco_freak_\bin\ClientDependency.Core.pdb
 C:\workspace\Umbraco\freak\Umbraco_freak_\bin\ClientDependency.Core.Mvc.pdb
